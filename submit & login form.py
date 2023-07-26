@@ -73,5 +73,8 @@ if __name__=="__main__":
     Button(window,text="وارد شدن",command=login,width=15,font=("Arabic Typesetting",18)).grid()
     window.geometry('600x480')
     window.resizable(width=False,height=False)
+    can=Canvas(window)
+    can.grid()
+    can.create_text((200,100),fill="orange",font='tkDefaeultFont 24',text="Create by OMID-GH")
     window.mainloop()
     
