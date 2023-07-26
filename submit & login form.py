@@ -75,6 +75,7 @@ if __name__=="__main__":
     window.resizable(width=False,height=False)
     can=Canvas(window)
     can.grid()
-    can.create_text((200,100),fill="orange",font='tkDefaeultFont 24',text="Create by OMID-GH")
+    can.create_text((200,100),fill="orange",font=('Chiller',33),text="Create by OMID-GH")
+    can.create_line(55, 125,349,125 ,fill='red',width=3)
     window.mainloop()
     
