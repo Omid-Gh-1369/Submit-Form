@@ -1,62 +1,90 @@
 from tkinter import *
+from tkinter import ttk
+from tkinter import messagebox
 
-N_P=Tk()
-N_P.title("Notepad_by_Omid-Gh")
-N_P.geometry("800x600")
-N_P.resizable(width=False, height=True)
-menubar=Menu(N_P)
+class login:
+    def __init__(self):
+        self.login=Tk()
+        self.login.config(bg="gray20")
+        self.login.title("ورود")
+        self.login.geometry('400x280')
+        self.login.resizable(width=False,height=False)
+        Label(self.login,text="                             ",bg="gray20").grid(row=0)
+        Label(self.login,text="                             ",bg="gray20").grid(row=1)        
+        Label(self.login,text="                               ",width=35,bg="gray20").grid(row=2,column=0)
+        Label(self.login,text="نام کاربری",width=15,font=("Arabic Typesetting",18),fg="white",bg="gray20").grid(row=2,column=1)
+        Entry(self.login,fg="gray10",bg="white",width=15,font=("Arabic Typesetting",18)).grid(row=2,column=0)
+        Label(self.login,text="رمز عبور",height=1,width=15,font=("Arabic Typesetting",18),fg="white",bg="gray20").grid(row=3,column=1)
+        Entry(self.login,fg="gray10",bg="white",width=15,font=("Arabic Typesetting",18),show="*").grid(row=3,column=0)
+        self.checke_log=Checkbutton(self.login,onvalue=1,activebackground="gray20",fg="red",bg="gray20",text="من ربات نیستم",font=(11),command=self.Verify,width=20,height=4,anchor="s").grid(row=4,column=0)
+    def Verify(self):
+        Button(self.login,text="ورود",command=self.click,font=(13),bg="gray20",fg="white").grid(row=5,column=0)
+    def click(self):
+        messagebox.showinfo("پیغام","با موفقیت وارد شدید")
+
+class submit:
+    def __init__(self):
+        self.counter_f=1000
+        self.counter_c=0
+        self.submit=Tk()
+        self.submit.geometry('400x280')
+        self.submit.resizable(width=False,height=False)
+        self.submit.title("ثبت نام")
+        self.submit.config(bg="gray20")
+        Label(self.submit, text="", width=3,bg="gray20",fg="white").grid(row=1, column=0)
+        Label(self.submit, text="فرم شماره ی ", width=15,bg="gray20",fg="white").grid(row=1, column=2)
+        Label(self.submit, text="کاربر شماره ی ", width=15,bg="gray20",fg="white").grid(row=2, column=2)
+        Label(self.submit, text="نام",width=15,bg="gray20",fg="white").grid(row=3, column=2)
+        Label(self.submit, text="عنوان درس", width=15,bg="gray20",fg="white").grid(row=4, column=2)
+        Label(self.submit, text="جنسیت", width=15,bg="gray20",fg="white").grid(row=5, column=2)
+        Label(self.submit, text="رایانامه", width=15,bg="gray20",fg="white").grid(row=6, column=2)
+        Label(self.submit, text="آدرس", width=15,bg="gray20",fg="white").grid(row=7, column=2)
+ 
+        self.counter_form=self.c_form()
+        self.counter_contact=self.c_contact()
+        
+        Label(self.submit,text=self.counter_form,bg="gray20",fg="white").grid(row=1, column=1, ipadx="70")
+        Label(self.submit,text=self.counter_contact,bg="gray20",fg="white").grid(row=2, column=1, ipadx="70") 
+        Entry(self.submit,justify="right",fg="gray10",bg="white").grid(row=3, column=1, ipadx="70")
+        Entry(self.submit,justify="right",fg="gray10",bg="white").grid(row=4, column=1, ipadx="70")
+        Combo=ttk.Combobox(self.submit,justify="right",values=["مرد","زن","غیره"])
+        Combo.grid(row=5, column=1, ipadx="61")
+        Combo.current(0)
+        Combo.configure()
+        Entry(self.submit,justify="right",fg="gray10",bg="white").grid(row=6, column=1, ipadx="70")
+        Entry(self.submit,justify="right",fg="gray10",bg="white").grid(row=7, column=1, ipadx="70")
+
+        Label(self.submit,bg="gray20",fg="white", text="اعتبار سنجی", width=15).grid(row=8, column=2)
+        Checkbutton(self.submit,bg="gray20",fg="red", text="من ربات نیستم",activebackground="gray20",font=(13), width=15,onvalue=True,command=self.Active).grid(row=8, column=1)
+        Label(self.submit,bg="gray20",fg="white",text="ثبت نام").grid(row=10,column=1)
+        Button(self.submit,bg="gray20",fg="white",text="ورود",command=login).grid(row=11,column=1)
+
+    def c_form(self):
+        global counter_f
+        self.counter_f +=1
+        return self.counter_f
+    def c_contact(self):
+        global counter_c
+        self.counter_c +=1
+        return self.counter_c
+    def click(self):
+        messagebox.showinfo("پیغام","با موفقیت ثبت نام انجام شد")
+    def Active(self):
+        Button(self.submit,text="ثبت نام",command=self.click,bg="gray20",fg="white").grid(row=10,column=1)
+        
+if __name__=="__main__":
+    window=Tk()
+    Label(window, text="....انتخاب نمایید ",height=2, width=45,font=("Arabic Typesetting",18),fg="white",bg="gray20").grid()
+    frame_home=Frame(window)
+    frame_home.grid()
+    Button(frame_home,text="ثبت نام",command=submit,height=1,width=15,font=("Arabic Typesetting",18),fg="white",bg="gray20").grid()
+    Button(frame_home,text="وارد شدن",command=login,height=1,width=15,font=("Arabic Typesetting",18),fg="white",bg="gray20").grid()
+    window.geometry('400x280')
+    window.resizable(width=False,height=False)
+    can=Canvas(window,background="gray20",borderwidth=-15)
+    can.grid()
+    can.create_text((180,50),fill="orange",font=('Chiller',33),text="Create by OMID-GH")
+    can.create_line(43, 78,322,78 ,fill='red',width=3,dash=(5,3))
+    window.config(bg="gray20")
+    window.mainloop()
     
-file=Menu(menubar,tearoff=0,background="white",bd=-15)  
-file.add_command(label="New tab                    Ctrl+N") 
-file.add_command(label="New window            Ctrl+Shift+N")  
-file.add_command(label="Open                         Ctrl+O")  
-file.add_command(label="Save                           Ctrl+S")  
-file.add_command(label="Save as...                   Ctrl+Shift+S") 
-file.add_command(label="Save all                      Ctrl+Alt+S")
-file.add_separator()
-file.add_command(label="Page setup")  
-file.add_command(label="Print                           Ctrl+P")
-file.add_separator()
-file.add_command(label="Close tab                   Ctrl+W") 
-file.add_command(label="Close window           Ctrl+Shift+W") 
-file.add_command(label="Exit")
-menubar.add_cascade(label="File",menu=file)
-
-edit=Menu(menubar,tearoff=0,background="white",bd=-15)
-edit.add_command(label="Undo                   Ctrl+Z")
-edit.add_separator()
-edit.add_command(label="Cut                       Ctrl+X")  
-edit.add_command(label="Copy                    Ctrl+C")  
-edit.add_command(label="Paste                    Ctrl+V")  
-edit.add_command(label="Delete                   Del")
-edit.add_separator()
-edit.add_command(label="Find                      Ctrl+F")
-edit.add_command(label="Find next              F3")
-edit.add_command(label="Find previous       Shift+F3")
-edit.add_command(label="Replace                 Ctrl+H")
-edit.add_command(label="Go to                     Ctrl+G")
-edit.add_separator()
-edit.add_command(label="Select all               Ctrl+A")
-edit.add_command(label="Time/Date            F5")
-edit.add_separator()
-edit.add_command(label="Font")
-menubar.add_cascade(label="Edit",menu=edit)
-
-view=Menu(menubar,tearoff=0,background="white",bd=-15)
-zoom=Menu(view,tearoff=0,bg="gray25",background="white",)
-zoom.add_command(label="Zoom in                                     Ctrl+Plus")
-zoom.add_command(label="Zoom out                                  Ctrl+Minus")
-zoom.add_command(label="Restore default zoom               Ctrl+0")
-view.add_cascade(label="Zoom",menu=zoom)
-view.add_checkbutton(label="Status bar")
-view.add_checkbutton(label="Word warp")
-menubar.add_cascade(label="View",menu=view)
-
-N_P.config(menu=menubar)
-scroll_bar=Scrollbar(N_P)
-scroll_bar.pack(side="right",fill="both")
-text=Text(N_P,background="white",yscrollcommand=scroll_bar.set,foreground="black",font=("Consolas",11))
-text.pack(side="left",expand=True,fill="both")
-scroll_bar.config(command=text.yview_moveto)
-
-N_P.mainloop()
