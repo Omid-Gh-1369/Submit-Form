@@ -1,81 +1,62 @@
 from tkinter import *
-from tkinter import ttk
-from tkinter import messagebox
 
-class login:
-    def __init__(self):
-        self.login=Tk()
-        
-        self.login.title("Login")
-        self.login.geometry('400x320')
-        self.login.resizable(width=False,height=False)
-        self.user=Label(self.login,text="Username",width=15).grid(row=1,column=0)
-        self.passw=Label(self.login,text="Password",width=15).grid(row=2,column=0)
-        self.userb=Entry(self.login).grid(row=1,column=1)
-        self.password=Entry(self.login).grid(row=2,column=1)
-        self.checke_log=Checkbutton(self.login,text="I'm Not Robot",onvalue=True,command=self.Verify,width=15).grid(row=3,column=1)
-    def Verify(self):
-        Button(self.login,text="Login",command=self.click).grid(row=6,column=1)
-    def click(self):
-        messagebox.showinfo("Notic","Login Successfuly")
-
-class submit:
-    def __init__(self):
-        self.counter_f=1000
-        self.counter_c=0
-        self.submit=Tk()
-        self.submit.geometry('600x480')
-        self.submit.resizable(width=False,height=False)
-        self.submit.title("Submit")
-        
-        Label(self.submit, text="Form No.", width=15).grid(row=1, column=0)
-        Label(self.submit, text="Contact No.", width=15).grid(row=2, column=0)
-        Label(self.submit, text="Name",width=15).grid(row=3, column=0)
-        Label(self.submit, text="Course", width=15).grid(row=4, column=0)
-        Label(self.submit, text="Gender", width=15).grid(row=5, column=0)
-        Label(self.submit, text="Email id", width=15).grid(row=6, column=0)
-        Label(self.submit, text="Address", width=15).grid(row=7, column=0)
- 
-        self.counter_form=self.c_form()
-        self.counter_contact=self.c_contact()
-        
-        Label(self.submit,text=self.counter_form).grid(row=1, column=1, ipadx="150")
-        Label(self.submit,text=self.counter_contact).grid(row=2, column=1, ipadx="150") 
-        Entry(self.submit).grid(row=3, column=1, ipadx="150")
-        Entry(self.submit).grid(row=4, column=1, ipadx="150")
-        ttk.Combobox(self.submit,values=["Male","Female","Other"]).grid(row=5, column=1, ipadx="140")
-        Entry(self.submit).grid(row=6, column=1, ipadx="150")
-        Entry(self.submit).grid(row=7, column=1, ipadx="150")
-
-        Label(self.submit, text="Verify", width=15).grid(row=8, column=0)
-        Checkbutton(self.submit, text="I'm Not Robot", width=15,onvalue=True,command=self.Active).grid(row=8, column=1)
-        Label(self.submit,text="Submit").grid(row=10,column=1)
-        Button(self.submit,text="Login",command=login).grid(row=11,column=1)
-
-    def c_form(self):
-        global counter_f
-        self.counter_f +=1
-        return self.counter_f
-    def c_contact(self):
-        global counter_c
-        self.counter_c +=1
-        return self.counter_c
-    def click(self):
-        messagebox.showinfo("Notic","SuccessFull Submit...")
-    def Active(self):
-        Button(self.submit,text="Submit",command=self.click).grid(row=10,column=1)
-        
-if __name__=="__main__":
-    window=Tk()
-    Label(window, text="....انتخاب نمایید ",font=("Arabic Typesetting",18),fg="white",bg="gray20",anchor="center").grid()
-    Button(window,text="ثبت نام",command=submit,width=15,justify="center",font=("Arabic Typesetting",18),fg="white",bg="gray20").grid()
-    Button(window,text="وارد شدن",command=login,width=15,font=("Arabic Typesetting",18),fg="white",bg="gray20").grid()
-    window.geometry('400x280')
-    window.resizable(width=False,height=False)
-    can=Canvas(window,background="gray20",borderwidth=-15)
-    can.grid()
-    can.create_text((200,100),fill="orange",font=('Chiller',33),text="Create by OMID-GH")
-    can.create_line(55, 127,349,127 ,fill='red',width=3,dash=(5,3))
-    window.config(bg="gray20")
-    window.mainloop()
+N_P=Tk()
+N_P.title("Notepad_by_Omid-Gh")
+N_P.geometry("800x600")
+N_P.resizable(width=False, height=True)
+menubar=Menu(N_P)
     
+file=Menu(menubar,tearoff=0,background="white",bd=-15)  
+file.add_command(label="New tab                    Ctrl+N") 
+file.add_command(label="New window            Ctrl+Shift+N")  
+file.add_command(label="Open                         Ctrl+O")  
+file.add_command(label="Save                           Ctrl+S")  
+file.add_command(label="Save as...                   Ctrl+Shift+S") 
+file.add_command(label="Save all                      Ctrl+Alt+S")
+file.add_separator()
+file.add_command(label="Page setup")  
+file.add_command(label="Print                           Ctrl+P")
+file.add_separator()
+file.add_command(label="Close tab                   Ctrl+W") 
+file.add_command(label="Close window           Ctrl+Shift+W") 
+file.add_command(label="Exit")
+menubar.add_cascade(label="File",menu=file)
+
+edit=Menu(menubar,tearoff=0,background="white",bd=-15)
+edit.add_command(label="Undo                   Ctrl+Z")
+edit.add_separator()
+edit.add_command(label="Cut                       Ctrl+X")  
+edit.add_command(label="Copy                    Ctrl+C")  
+edit.add_command(label="Paste                    Ctrl+V")  
+edit.add_command(label="Delete                   Del")
+edit.add_separator()
+edit.add_command(label="Find                      Ctrl+F")
+edit.add_command(label="Find next              F3")
+edit.add_command(label="Find previous       Shift+F3")
+edit.add_command(label="Replace                 Ctrl+H")
+edit.add_command(label="Go to                     Ctrl+G")
+edit.add_separator()
+edit.add_command(label="Select all               Ctrl+A")
+edit.add_command(label="Time/Date            F5")
+edit.add_separator()
+edit.add_command(label="Font")
+menubar.add_cascade(label="Edit",menu=edit)
+
+view=Menu(menubar,tearoff=0,background="white",bd=-15)
+zoom=Menu(view,tearoff=0,bg="gray25",background="white",)
+zoom.add_command(label="Zoom in                                     Ctrl+Plus")
+zoom.add_command(label="Zoom out                                  Ctrl+Minus")
+zoom.add_command(label="Restore default zoom               Ctrl+0")
+view.add_cascade(label="Zoom",menu=zoom)
+view.add_checkbutton(label="Status bar")
+view.add_checkbutton(label="Word warp")
+menubar.add_cascade(label="View",menu=view)
+
+N_P.config(menu=menubar)
+scroll_bar=Scrollbar(N_P)
+scroll_bar.pack(side="right",fill="both")
+text=Text(N_P,background="white",yscrollcommand=scroll_bar.set,foreground="black",font=("Consolas",11))
+text.pack(side="left",expand=True,fill="both")
+scroll_bar.config(command=text.yview_moveto)
+
+N_P.mainloop()
