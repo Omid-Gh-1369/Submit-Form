@@ -1,8 +1,11 @@
 from tkinter import *
+from tkinter import ttk
+from tkinter import messagebox
 
 class login:
     def __init__(self):
         self.login=Tk()
+        
         self.login.title("Login")
         self.login.geometry('400x320')
         self.login.resizable(width=False,height=False)
@@ -10,15 +13,11 @@ class login:
         self.passw=Label(self.login,text="Password",width=15).grid(row=2,column=0)
         self.userb=Entry(self.login).grid(row=1,column=1)
         self.password=Entry(self.login).grid(row=2,column=1)
-        self.checke_log=Checkbutton(self.login,text="I'm Not Robot",offvalue=True,command=self.Verify,width=15).grid(row=3,column=1)
+        self.checke_log=Checkbutton(self.login,text="I'm Not Robot",onvalue=True,command=self.Verify,width=15).grid(row=3,column=1)
     def Verify(self):
         Button(self.login,text="Login",command=self.click).grid(row=6,column=1)
     def click(self):
-        self.msg=Tk()
-        self.msg.title("Login Success Full")
-        self.msg.configure(width=100)
-        Label(self.msg,text="Login Success Full").grid()
-        self.bou=Button(self.msg,text="OK",command=self.msg.destroy).grid()
+        messagebox.showinfo("Notic","Login Successfuly")
 
 class submit:
     def __init__(self):
@@ -49,7 +48,7 @@ class submit:
         Entry(self.submit).grid(row=7, column=1, ipadx="150")
 
         Label(self.submit, text="Verify", width=15).grid(row=8, column=0)
-        Checkbutton(self.submit, text="I'm Not Robot", width=15,offvalue=True,command=self.Active).grid(row=8, column=1)
+        Checkbutton(self.submit, text="I'm Not Robot", width=15,onvalue=True,command=self.Active).grid(row=8, column=1)
         Label(self.submit,text="Submit").grid(row=10,column=1)
         Button(self.submit,text="Login",command=login).grid(row=11,column=1)
 
@@ -62,20 +61,21 @@ class submit:
         self.counter_c +=1
         return self.counter_c
     def click(self):
-        Message(self.submit,text="SuccessFull Submit...",width=150).grid()
+        messagebox.showinfo("Notic","SuccessFull Submit...")
     def Active(self):
         Button(self.submit,text="Submit",command=self.click).grid(row=10,column=1)
         
 if __name__=="__main__":
     window=Tk()
-    Label(window, text="....انتخاب نمایید ",font=("Arabic Typesetting",18),bg="green",anchor="center").grid()
-    Button(window,text="ثبت نام",command=submit,width=15,justify="center",font=("Arabic Typesetting",18)).grid()
-    Button(window,text="وارد شدن",command=login,width=15,font=("Arabic Typesetting",18)).grid()
-    window.geometry('600x480')
+    Label(window, text="....انتخاب نمایید ",font=("Arabic Typesetting",18),fg="white",bg="gray20",anchor="center").grid()
+    Button(window,text="ثبت نام",command=submit,width=15,justify="center",font=("Arabic Typesetting",18),fg="white",bg="gray20").grid()
+    Button(window,text="وارد شدن",command=login,width=15,font=("Arabic Typesetting",18),fg="white",bg="gray20").grid()
+    window.geometry('400x280')
     window.resizable(width=False,height=False)
-    can=Canvas(window)
+    can=Canvas(window,background="gray20",borderwidth=-15)
     can.grid()
     can.create_text((200,100),fill="orange",font=('Chiller',33),text="Create by OMID-GH")
-    can.create_line(55, 125,349,125 ,fill='red',width=3)
+    can.create_line(55, 127,349,127 ,fill='red',width=3,dash=(5,3))
+    window.config(bg="gray20")
     window.mainloop()
     
