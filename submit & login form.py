@@ -7,7 +7,7 @@ class login:
         self.login=Tk()
         self.login.config(bg="gray20")
         self.login.title("ورود")
-        self.login.geometry('400x300')
+        self.login.geometry('400x300+450+200')
         self.login.resizable(width=False,height=False)
         Label(self.login,text="                             ",bg="gray20").grid(row=0)
         Label(self.login,text="                             ",bg="gray20").grid(row=1)        
@@ -28,7 +28,7 @@ class submit:
         self.counter_f=1000
         self.counter_c=0
         self.submit=Tk()
-        self.submit.geometry('400x300')
+        self.submit.geometry('400x300+450+200')
         self.submit.resizable(width=False,height=False)
         self.submit.title("ثبت نام")
         self.submit.config(bg="gray20")
@@ -81,7 +81,7 @@ if __name__=="__main__":
     frame_home.grid()
     Button(frame_home,text="ثبت نام",command=submit,height=1,width=15,font=("Arabic Typesetting",18),fg="white",bg="gray20").grid()
     Button(frame_home,text="وارد شدن",command=login,height=1,width=15,font=("Arabic Typesetting",18),fg="white",bg="gray20").grid()
-    window.geometry('400x300')
+    window.geometry('400x300+450+200')
     window.resizable(width=False,height=False)
     can=Canvas(window,background="gray20",borderwidth=-15)
     can.grid()
