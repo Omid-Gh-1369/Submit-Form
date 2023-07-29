@@ -7,7 +7,7 @@ class login:
         self.login=Tk()
         self.login.config(bg="gray20")
         self.login.title("ورود")
-        self.login.geometry('400x280')
+        self.login.geometry('400x300')
         self.login.resizable(width=False,height=False)
         Label(self.login,text="                             ",bg="gray20").grid(row=0)
         Label(self.login,text="                             ",bg="gray20").grid(row=1)        
@@ -16,9 +16,10 @@ class login:
         Entry(self.login,fg="gray10",bg="white",width=15,font=("Arabic Typesetting",18)).grid(row=2,column=0)
         Label(self.login,text="رمز عبور",height=1,width=15,font=("Arabic Typesetting",18),fg="white",bg="gray20").grid(row=3,column=1)
         Entry(self.login,fg="gray10",bg="white",width=15,font=("Arabic Typesetting",18),show="*").grid(row=3,column=0)
-        self.checke_log=Checkbutton(self.login,onvalue=1,activebackground="gray20",fg="red",bg="gray20",text="من ربات نیستم",font=(11),command=self.Verify,width=20,height=4,anchor="s").grid(row=4,column=0)
+        Label(self.login,text="ورود",width=8,font=("Arabic Typesetting",14),bg="gray20",fg="white").grid(row=5,column=0)
+        self.checke_log=Checkbutton(self.login,onvalue=1,activebackground="gray20",fg="red",bg="gray20",text="من ربات نیستم",font=("Arabic Typesetting",14),command=self.Verify,width=20,height=4,anchor="s").grid(row=4,column=0)
     def Verify(self):
-        Button(self.login,text="ورود",command=self.click,font=(13),bg="gray20",fg="white").grid(row=5,column=0)
+        Button(self.login,text="ورود",width=8,command=self.click,font=("Arabic Typesetting",14),bg="gray20",fg="white").grid(row=5,column=0)
     def click(self):
         messagebox.showinfo("پیغام","با موفقیت وارد شدید")
 
@@ -27,18 +28,18 @@ class submit:
         self.counter_f=1000
         self.counter_c=0
         self.submit=Tk()
-        self.submit.geometry('400x280')
+        self.submit.geometry('400x300')
         self.submit.resizable(width=False,height=False)
         self.submit.title("ثبت نام")
         self.submit.config(bg="gray20")
         Label(self.submit, text="", width=3,bg="gray20",fg="white").grid(row=1, column=0)
-        Label(self.submit, text="فرم شماره ی ", width=15,bg="gray20",fg="white").grid(row=1, column=2)
-        Label(self.submit, text="کاربر شماره ی ", width=15,bg="gray20",fg="white").grid(row=2, column=2)
-        Label(self.submit, text="نام",width=15,bg="gray20",fg="white").grid(row=3, column=2)
-        Label(self.submit, text="عنوان درس", width=15,bg="gray20",fg="white").grid(row=4, column=2)
-        Label(self.submit, text="جنسیت", width=15,bg="gray20",fg="white").grid(row=5, column=2)
-        Label(self.submit, text="رایانامه", width=15,bg="gray20",fg="white").grid(row=6, column=2)
-        Label(self.submit, text="آدرس", width=15,bg="gray20",fg="white").grid(row=7, column=2)
+        Label(self.submit, text="فرم شماره ی ", width=15,font=("Arabic Typesetting",14),bg="gray20",fg="white").grid(row=1, column=2)
+        Label(self.submit, text="کاربر شماره ی ", width=15,font=("Arabic Typesetting",14),bg="gray20",fg="white").grid(row=2, column=2)
+        Label(self.submit, text="نام",width=15,font=("Arabic Typesetting",14),bg="gray20",fg="white").grid(row=3, column=2)
+        Label(self.submit, text="عنوان درس", width=15,font=("Arabic Typesetting",14),bg="gray20",fg="white").grid(row=4, column=2)
+        Label(self.submit, text="جنسیت", width=15,font=("Arabic Typesetting",14),bg="gray20",fg="white").grid(row=5, column=2)
+        Label(self.submit, text="رایانامه", width=15,font=("Arabic Typesetting",14),bg="gray20",fg="white").grid(row=6, column=2)
+        Label(self.submit, text="آدرس", width=15,font=("Arabic Typesetting",14),bg="gray20",fg="white").grid(row=7, column=2)
  
         self.counter_form=self.c_form()
         self.counter_contact=self.c_contact()
@@ -54,10 +55,10 @@ class submit:
         Entry(self.submit,justify="right",fg="gray10",bg="white").grid(row=6, column=1, ipadx="70")
         Entry(self.submit,justify="right",fg="gray10",bg="white").grid(row=7, column=1, ipadx="70")
 
-        Label(self.submit,bg="gray20",fg="white", text="اعتبار سنجی", width=15).grid(row=8, column=2)
-        Checkbutton(self.submit,bg="gray20",fg="red", text="من ربات نیستم",activebackground="gray20",font=(13), width=15,onvalue=True,command=self.Active).grid(row=8, column=1)
-        Label(self.submit,bg="gray20",fg="white",text="ثبت نام").grid(row=10,column=1)
-        Button(self.submit,bg="gray20",fg="white",text="ورود",command=login).grid(row=11,column=1)
+        Label(self.submit,bg="gray20",fg="white",font=("Arabic Typesetting",14), text="اعتبار سنجی", width=15).grid(row=8, column=2)
+        Checkbutton(self.submit,bg="gray20",fg="red", text="من ربات نیستم",activebackground="gray20",font=("Arabic Typesetting",14), width=15,onvalue=True,command=self.Active).grid(row=8, column=1)
+        Label(self.submit,font=("Arabic Typesetting",14),bg="gray20",fg="white",text="ثبت نام").grid(row=10,column=1)
+        Button(self.submit,font=("Arabic Typesetting",14),width=8,bg="gray20",fg="white",text="ورود",command=login).grid(row=11,column=1)
 
     def c_form(self):
         global counter_f
@@ -70,16 +71,17 @@ class submit:
     def click(self):
         messagebox.showinfo("پیغام","با موفقیت ثبت نام انجام شد")
     def Active(self):
-        Button(self.submit,text="ثبت نام",command=self.click,bg="gray20",fg="white").grid(row=10,column=1)
+        Button(self.submit,text="ثبت نام",width=8,font=("Arabic Typesetting",14),command=self.click,bg="gray20",fg="white").grid(row=10,column=1)
         
 if __name__=="__main__":
     window=Tk()
+    window.title("صفحه نخست")
     Label(window, text="....انتخاب نمایید ",height=2, width=45,font=("Arabic Typesetting",18),fg="white",bg="gray20").grid()
     frame_home=Frame(window)
     frame_home.grid()
     Button(frame_home,text="ثبت نام",command=submit,height=1,width=15,font=("Arabic Typesetting",18),fg="white",bg="gray20").grid()
     Button(frame_home,text="وارد شدن",command=login,height=1,width=15,font=("Arabic Typesetting",18),fg="white",bg="gray20").grid()
-    window.geometry('400x280')
+    window.geometry('400x300')
     window.resizable(width=False,height=False)
     can=Canvas(window,background="gray20",borderwidth=-15)
     can.grid()
