@@ -19,9 +19,10 @@ class login:
         Label(self.login,text="ورود",width=8,font=("Arabic Typesetting",14),bg="gray20",fg="white").grid(row=5,column=0)
         self.checke_log=Checkbutton(self.login,onvalue=1,activebackground="gray20",fg="red",bg="gray20",text="من ربات نیستم",font=("Arabic Typesetting",14),command=self.Verify,width=20,height=4,anchor="s").grid(row=4,column=0)
     def Verify(self):
-        Button(self.login,text="ورود",width=8,command=self.click,font=("Arabic Typesetting",14),bg="gray20",fg="white").grid(row=5,column=0)
+        Button(self.login,text="ورود",width=8,command=self.click,font=("Arabic Typesetting",14),bg="gray20",fg="white").grid(row=5,column=0)       
     def click(self):
         messagebox.showinfo("پیغام","با موفقیت وارد شدید")
+        self.login.destroy()
 
 class submit:
     def __init__(self):
@@ -70,6 +71,7 @@ class submit:
         return self.counter_c
     def click(self):
         messagebox.showinfo("پیغام","با موفقیت ثبت نام انجام شد")
+        self.submit.destroy()
     def Active(self):
         Button(self.submit,text="ثبت نام",width=8,font=("Arabic Typesetting",14),command=self.click,bg="gray20",fg="white").grid(row=10,column=1)
         
